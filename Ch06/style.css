@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+.container {
+  position: relative;
+}
+
+.img {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  background-image: url("./pexels-tkirkgoz-29780396.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(30px);
+  cursor: pointer;
+}
+
+.countdown-box {
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  top: calc(100vh / 2 - 2.5rem);
+  left: calc(100vw / 2 - 2.5rem);
+  /* background-color: red; */
+  font-size: 3rem;
+  color: white;
+  opacity: 1;
+}
+
+.countdown {
+  font-weight: 800;
+}

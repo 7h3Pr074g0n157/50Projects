@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Form Input Wave</title>
+  </head>
+  <body>
+    <form action="POST" id="main-form" class="main-form">
+      <h1 id="main-heading" class="main-heading">Please Login</h1>
+
+      <label id="input-wrapper" class="input-wrapper" for="input-mail">
+        <input type="mail" id="input-mail" class="input-field" />
+        <span id="input-label" class="input-label">Email</span>
+      </label>
+
+      <label id="input-wrapper" class="input-wrapper" for="input-password">
+        <input type="password" id="input-password" class="input-field" />
+        <span id="input-label" class="input-label">Password</span>
+      </label>
+
+      <button type="submit" id="button-submit" class="button-submit">
+        Login
+      </button>
+      <p id="link" class="link">
+        Don't have an account?
+        <a href="#" id="link__register" class="link__register">Register</a>
+      </p>
+    </form>
+  </body>
+</html>
