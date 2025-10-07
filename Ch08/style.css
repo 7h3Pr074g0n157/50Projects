@@ -18,7 +18,6 @@ html {
 }
 
 .section {
-  width: 50%;
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -62,4 +61,16 @@ html {
 }
 .xbox-btn:hover {
   background-color: green;
+}
+
+.w25 {
+  width: 25%;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.w75 {
+  width: 75%;
 }
