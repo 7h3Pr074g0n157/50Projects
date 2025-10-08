@@ -8,4 +8,43 @@
 
 html {
   font-size: 10px;
+  font-family: 'Roboto';
+}
+
+body {
+  background-color: #EDEDED;
+}
+
+.container {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.faq-heading {
+  font-size: 3rem;
+}
+
+.faq-header {
+  margin-bottom: 2rem;
+}
+
+.box {
+  padding: 2rem;
+  border: 0.2rem solid #A4A4A4;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  font-size: 1.5rem;
+}
+
+.box h2 {
+  font-weight: 400;
+}
+
+.hidden {
+  display: none;
 }
