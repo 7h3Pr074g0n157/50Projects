@@ -54,6 +54,14 @@ body {
   font-weight: 400;
 }
 
+.box i {
+  cursor: pointer;
+}
+
 .hidden {
   display: none;
+}
+
+.unfolded {
+  background-color: #fff;
 }
