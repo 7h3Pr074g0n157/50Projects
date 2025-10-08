@@ -1,13 +1,22 @@
 const inputFields = document.querySelectorAll(".input-field");
 // const inputlabels = document.querySelectorAll(".input-label");
 
+function handleClick(e) {
+  // console.log(e.target);
+  const letters = [
+    ...e.target.parentElement.querySelector(".input-label").children
+  ];
+  // console.log(letters);
+let currentIndex = 0;
+  const intervalID = setInterval(()=>{
+    const currentLetter = letters[currentIndex]
+    currentLetter.style.color = 'red';
+    currentLetter.style.top = '-1rem';
+    currentIndex++;
+    if(currentIndex>= letters.length) clearInterval(intervalID);
+}, 2000)
+}
+
 for (const inputField of inputFields) {
-  console.log(inputField);
-  inputField.addEventListener("click", (e) => {
-    console.log(e.target);
-    const fieldLabel = e.target.parentElement.querySelector(".input-label");
-    console.log("label", fieldLabel);
-    fieldLabel.style.color = "red";
-    fieldLabel.style.top = "-10rem";
-  });
+  inputField.addEventListener("click", handleClick);
 }

@@ -68,6 +68,9 @@ body {
   left: 0;
   font-size: 2rem;
 }
+/* .letter{
+  transform: translateY(0);
+} */
 
 .button-submit {
   padding: 1.5rem;
