@@ -59,18 +59,33 @@ body {
   background-color: transparent;
 }
 
-.input-field:active {
+.input-field:focus {
   border: none;
+  border-bottom: 0.2rem solid #fff;
+  outline: none;
 }
 
-.input-label {
-  position: absolute;
-  left: 0;
+.letter {
+  display: inline-block;
+  transform: translateY(-8rem);
   font-size: 2rem;
 }
-/* .letter{
-  transform: translateY(0);
-} */
+
+.translate {
+  transform: translateY(-11rem);
+  transition-property: transform;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in;
+  transition-delay: 0ms;
+}
+
+.initial {
+  transform: translateY(-8rem);
+  transition-property: transform;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in;
+  transition-delay: 0ms;
+}
 
 .button-submit {
   padding: 1.5rem;
