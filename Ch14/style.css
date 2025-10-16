@@ -40,7 +40,8 @@ body {
 
 .choice {
   padding: 0.5rem;
-  border-radius: 50%;
+  border-radius: 1rem;
+  margin-right: 0.5rem;
   display: inline-block;
   background-color: orange;
 }

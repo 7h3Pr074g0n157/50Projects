@@ -10,22 +10,21 @@ function createChoiceBadge(textContent, choiceCount) {
   return li;
 }
 
-function outputNewChoice() {}
-
-function handleChoiceInput(e) {
-  // for (const entry of choiceList) {
-  //   entry.remove();
-  // }
-  let input = "";
-  input += e.target.value;
-  choices = input.split(",");
-
+function generateChoiceList() {
+  choiceList.replaceChildren();
   choices.forEach((choice, i) => {
     if (choice) {
       const newChoice = createChoiceBadge(choice, i);
       choiceList.appendChild(newChoice);
     }
   });
+}
+
+function handleChoiceInput(e) {
+  let input = "";
+  input += e.target.value;
+  choices = input.split(",");
+  generateChoiceList();
 }
 
 choiceInput.addEventListener("input", handleChoiceInput);
