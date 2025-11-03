@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Form Input Wave</title>
+  </head>
+  <body>
+    <form action="POST" id="main-form" class="main-form">
+      <h1 id="main-heading" class="main-heading">Please Login</h1>
+
+      <label id="input-wrapper-email" class="input-wrapper" for="input-mail">
+        <input type="mail" id="input-mail" class="input-field" />
+        <span id="input-label-email" class="input-label">
+          <span id="email-e" class="letter">E</span>
+          <span id="email-m" class="letter">m</span>
+          <span id="email-a" class="letter">a</span>
+          <span id="email-e" class="letter">i</span>
+          <span id="email-l" class="letter">l</span>
+        </span>
+      </label>
+
+      <label id="input-wrapper-password" class="input-wrapper" for="input-password">
+        <input type="password" id="input-password" class="input-field" />
+        <span id="input-label-password" class="input-label">
+          <span id="password-p" class="letter">P</span>
+          <span id="password-a" class="letter">a</span>
+          <span id="password-s" class="letter">s</span>
+          <span id="password-s" class="letter">s</span>
+          <span id="password-w" class="letter">w</span>
+          <span id="password-o" class="letter">o</span>
+          <span id="password-r" class="letter">r</span>
+          <span id="password-d" class="letter">d</span>
+        </span>
+      </label>
+
+      <button type="submit" id="button-submit" class="button-submit">
+        Login
+      </button>
+      <p id="link" class="link">
+        Don't have an account?
+        <a href="#" id="link__register" class="link__register">Register</a>
+      </p>
+    </form>
+  </body>
+</html>

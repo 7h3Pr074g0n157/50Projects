@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  font-family: "Roboto";
+  font-weight: 800;
+}
+
+h1 {
+  text-align: center;
+  font-size: 5rem;
+}
+
+.container {
+  width: 100%;
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box {
+  width: 25rem;
+  height: 20rem;
+  border-radius: 2.5rem;
+  margin: 2.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: skyblue;
+  font-size: 5rem;
+  color: white;
+}
+
+@keyframes flyIn {
+  0% {
+    transform: translateX(-50rem);
+  }
+  100% {
+    transform: translateX(0rem);
+  }
+}
+
+@keyframes flyOut {
+  0% {
+    transform: translateX(0rem);
+  }
+  100% {
+    transform: translateX(+50rem);
+  }
+}
+
+.flyIn {
+  animation-name: flyIn;
+  animation-duration: 200ms;
+  animation-fill-mode: forwards;
+}
+
+.flyOut {
+  animation-name: flyOut;
+  animation-duration: 200ms;
+  animation-fill-mode: forwards;
+}

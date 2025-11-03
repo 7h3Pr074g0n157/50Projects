@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  font-family: "Roboto";
+  font-weight: 500;
+}
+
+body {
+  background-color: #2d2d2d;
+}
+
+.navbar-box {
+  width: 10rem;
+  height: 10rem;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  border-bottom-right-radius: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #ff7d70;
+  z-index: 1;
+}
+
+.fa-bars,
+.fa-xmark {
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.container {
+  width: 100%;
+  padding: 10rem 20rem;
+  background-color: white;
+}
+
+.transform {
+  transform: rotate(-15deg);
+  transform-origin: top left;
+}
+
+.main-header {
+  margin-bottom: 2rem;
+}
+
+.main-heading {
+  font-size: 3rem;
+}
+
+.main-heading__sub {
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.text-box {
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.picture-box {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.img-heading {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.picture-box img {
+  width: 100%;
+  height: auto;
+}
+
+.main-nav {
+  z-index: -1;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  position: fixed;
+  bottom: 0;
+  font-size: 3rem;
+}
+
+.nav-items {
+  list-style-type: none;
+  padding-left: 2rem;
+  color: white;
+}
+
+.nav-item {
+  padding: 3rem 0;
+}
+
+.fa-house,
+.fa-user,
+.fa-envelope {
+  padding-right: 5rem;
+}

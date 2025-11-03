@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #685ae0;
+}
+
+.container {
+  width: 25rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar,
+.search-icon {
+  height: 100%;
+  background-color: white;
+}
+
+.search-bar {
+  border: none;
+  width: 20rem;
+  transition-property: initial;
+  transition-duration: 1s;
+}
+
+.search-icon {
+  width: 5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.hidden {
+  width: 0rem;
+  transition-property: initial;
+  transition-duration: 1s;
+}
+
+.center {
+  transition-property: initial;
+  transition-duration: 1s;
+}
