@@ -60,6 +60,12 @@ body {
   align-items: center;
   text-align: center;
   background-color: #fff;
+  cursor: pointer;
+}
+
+.fullLittleBottle {
+  background-color: #58a7f2;
+  color: #fff;
 }
 
 .big-bottle {
