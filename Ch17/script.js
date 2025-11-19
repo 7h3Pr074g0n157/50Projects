@@ -7,52 +7,43 @@ let remainingLiter = 2,
   percentDrank = 0;
 
 littleBottles.forEach((bottle) => {
-  bottle.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    const clickedBottle = e.target,
-      bgBlue = "#58a7f2",
-      bgWhite = "#fff";
-
-    let startPoint = 0,
-      secondPoint = percentDrank,
-      thirdPoint = percentDrank,
-      stopPoint = 100;
-
-    if ([...clickedBottle.classList].includes("fullLittleBottle")) {
-      clickedBottle.classList.remove("fullLittleBottle");
-      if (remainingLiter < 2) remainingLiter += 0.25;
-      bigBottle.textContent = remainingLiter + "L";
-
-      mlDrank -= 0.25;
-      percentDrank = (mlDrank / 2) * 100;
-
-      secondPoint = percentDrank;
-      thirdPoint = percentDrank;
-
-      bigBottle.style.background = `linear-gradient(to top, 
-      ${bgBlue} ${startPoint}%, 
-      ${bgBlue} ${secondPoint}%, 
-      ${bgWhite} ${thirdPoint}%, 
-      ${bgWhite} ${stopPoint}%`;
-    } else {
-      clickedBottle.classList.add("fullLittleBottle");
-      if (remainingLiter > 0) remainingLiter -= 0.25;
-      bigBottle.textContent = remainingLiter + "L";
-
-      mlDrank += 0.25;
-      percentDrank = (mlDrank / 2) * 100;
-
-      secondPoint = percentDrank;
-      thirdPoint = percentDrank;
-
-      bigBottle.style.background = `linear-gradient(to top, 
-      ${bgBlue} ${startPoint}%, 
-      ${bgBlue} ${secondPoint}%, 
-      ${bgWhite} ${thirdPoint}%, 
-      ${bgWhite} ${stopPoint}%`;
-    }
-
-    bigBottle.style.color = percentDrank > 50 ? bgWhite : "blue";
-  });
+  bottle.addEventListener("click", clickBottlesHandler);
 });
+
+function clickBottlesHandler(ev) {
+  ev.preventDefault();
+  const clickedBottle = ev.target;
+
+  if ([...clickedBottle.classList].includes("fullLittleBottle")) {
+    clickedBottle.classList.remove("fullLittleBottle");
+
+    if (remainingLiter < 2) remainingLiter += 0.25;
+    handleRemainingLiter();
+
+    mlDrank -= 0.25;
+    changeLinearGradient();
+  } else {
+    clickedBottle.classList.add("fullLittleBottle");
+
+    if (remainingLiter > 0) remainingLiter -= 0.25;
+    handleRemainingLiter();
+
+    mlDrank += 0.25;
+    changeLinearGradient();
+  }
+
+  bigBottle.style.color = percentDrank > 50 ? "white" : "blue";
+}
+
+function changeLinearGradient() {
+  percentDrank = (mlDrank / 2) * 100;
+  bigBottle.style.background = `linear-gradient(to top, 
+      #58a7f2 0%, 
+      #58a7f2 ${percentDrank}%, 
+      #fff ${percentDrank}%, 
+      #fff 100%`;
+}
+
+function handleRemainingLiter() {
+  bigBottle.textContent = remainingLiter + "L\nremaining";
+}
