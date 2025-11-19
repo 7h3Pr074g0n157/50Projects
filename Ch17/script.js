@@ -16,27 +16,21 @@ function clickBottlesHandler(ev) {
 
   if ([...clickedBottle.classList].includes("fullLittleBottle")) {
     clickedBottle.classList.remove("fullLittleBottle");
-
-    if (remainingLiter < 2) remainingLiter += 0.25;
-    handleRemainingLiter();
-
-    mlDrank -= 0.25;
-    changeLinearGradient();
+    handleRemainingLiter(false);
+    changeLinearGradient(false);
   } else {
     clickedBottle.classList.add("fullLittleBottle");
-
-    if (remainingLiter > 0) remainingLiter -= 0.25;
-    handleRemainingLiter();
-
-    mlDrank += 0.25;
-    changeLinearGradient();
+    handleRemainingLiter(true);
+    changeLinearGradient(true);
   }
 
   bigBottle.style.color = percentDrank > 50 ? "white" : "blue";
 }
 
-function changeLinearGradient() {
+function changeLinearGradient(changeMLdrank) {
+  mlDrank = changeMLdrank ? mlDrank + 0.25 : mlDrank - 0.25;
   percentDrank = (mlDrank / 2) * 100;
+
   bigBottle.style.background = `linear-gradient(to top, 
       #58a7f2 0%, 
       #58a7f2 ${percentDrank}%, 
@@ -44,6 +38,11 @@ function changeLinearGradient() {
       #fff 100%`;
 }
 
-function handleRemainingLiter() {
+function handleRemainingLiter(changeRemainingLiter) {
+  if (changeRemainingLiter) {
+    if (remainingLiter > 0) remainingLiter -= 0.25;
+  } else {
+    if (remainingLiter < 2) remainingLiter += 0.25;
+  }
   bigBottle.textContent = remainingLiter + "L\nremaining";
 }
