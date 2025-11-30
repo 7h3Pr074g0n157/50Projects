@@ -1,15 +1,10 @@
 const bigBottle = document.getElementById("2l-bottle");
 const remainingLiter = document.getElementById("remaining-liter");
 const percentDrank = document.getElementById("percent-drank");
-const littleBottles = document.querySelectorAll(
-  ".little-bottles-container > div"
+const littleBottlesContainer = document.querySelector(
+  ".little-bottles-container"
 );
-const bottleState = {
-  bottlesDrank: 0,
-  remainingLiter: 2,
-  mlDrank: 0,
-  percentDrank: 0
-};
+const littleBottles = [...littleBottlesContainer.children];
 
 littleBottles.forEach((bottle) => {
   bottle.addEventListener("click", clickBottlesHandler);
@@ -19,40 +14,45 @@ function clickBottlesHandler(ev) {
   ev.preventDefault();
   const clickedBottle = ev.target;
 
-  // console.log(clickedBottle);
   if ([...clickedBottle.classList].includes("fullLittleBottle")) {
-    clickedBottle.classList.remove("fullLittleBottle");
-    calcDrank(false);
+    calcBottleState(false, clickedBottle);
   } else {
-    clickedBottle.classList.add("fullLittleBottle");
-    calcDrank(true);
+    calcBottleState(true, clickedBottle);
   }
-
-  bigBottle.style.color = bottleState.percentDrank > 50 ? "white" : "blue";
 }
 
-function calcDrank(drank) {
+function calcBottleState(drank, clickedBottle) {
+  const bottleState = {
+    clickedBottle: clickedBottle,
+    ml: 0.25,
+    index: littleBottles.indexOf(clickedBottle) + 1,
+    bottlesDrank: 0,
+    mlDrank: 0,
+    percentDrank: 0,
+    remainingLiter: 2
+  };
+
   if (drank) {
-    bottleState.mlDrank += 0.25;
-    if (bottleState.remainingLiter > 0) bottleState.remainingLiter -= 0.25;
-    updateBigBottle();
+    bottleState.mlDrank = bottleState.ml * bottleState.index;
+    bottleState.remainingLiter -= bottleState.ml * bottleState.index;
   } else {
-    bottleState.mlDrank -= 0.25;
-    if (bottleState.remainingLiter < 2) bottleState.remainingLiter += 0.25;
-    updateBigBottle();
+    bottleState.mlDrank -= bottleState.ml * bottleState.index;
+    bottleState.remainingLiter += bottleState.ml * bottleState.index;
   }
-  // const bottleList = [...littleBottles];
-  // bottleList.forEach((bottle, i) => {
-  //   if (bottle.id === clickedBottle.id) {
-  //     bottleState.bottlesDrank = i + 1 - bottleState.bottlesDrank;
-  //     console.log("loop", i, bottleState.bottlesDrank);
-  //   }
-  // });
-}
-
-function updateBigBottle() {
   bottleState.percentDrank = (bottleState.mlDrank / 2) * 100;
 
+  updateBigBottle(bottleState);
+  updateLittleBottles(drank, bottleState);
+
+  console.log(
+    bottleState.index,
+    bottleState.mlDrank,
+    bottleState.percentDrank,
+    bottleState.remainingLiter
+  );
+}
+
+function updateBigBottle(bottleState) {
   bigBottle.style.background = `linear-gradient(to top, 
       #58a7f2 0%, 
       #58a7f2 ${bottleState.percentDrank}%, 
@@ -61,4 +61,16 @@ function updateBigBottle() {
 
   percentDrank.textContent = bottleState.percentDrank + " %";
   remainingLiter.textContent = bottleState.remainingLiter + "L\nremaining";
+  bigBottle.style.color = bottleState.percentDrank > 50 ? "white" : "blue";
+}
+
+function updateLittleBottles(bottleState) {
+  const maxIndex = bottleState.index - 1;
+
+  littleBottles.forEach((bottle, i) => {
+    bottle.classList.remove("fullLittleBottle");
+    if (i <= maxIndex) {
+      bottle.classList.add("fullLittleBottle");
+    }
+  });
 }
