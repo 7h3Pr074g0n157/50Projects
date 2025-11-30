@@ -1,3 +1,4 @@
+const refreshGoal = document.getElementById("refresh-goal");
 const bigBottle = document.getElementById("2l-bottle");
 const remainingLiter = document.getElementById("remaining-liter");
 const percentDrank = document.getElementById("percent-drank");
@@ -6,6 +7,7 @@ const littleBottlesContainer = document.querySelector(
 );
 const littleBottles = [...littleBottlesContainer.children];
 
+refreshGoal.addEventListener("click", storeDrinkingGoals);
 littleBottles.forEach((bottle) => {
   bottle.addEventListener("click", clickBottlesHandler);
 });
@@ -15,41 +17,37 @@ function clickBottlesHandler(ev) {
   const clickedBottle = ev.target;
 
   if ([...clickedBottle.classList].includes("fullLittleBottle")) {
-    calcBottleState(false, clickedBottle);
+    calcDrank(false, clickedBottle);
   } else {
-    calcBottleState(true, clickedBottle);
+    calcDrank(true, clickedBottle);
   }
 }
 
-function calcBottleState(drank, clickedBottle) {
-  const bottleState = {
+function storeDrinkingGoals(clickedBottle, value0 = 0, value2 = 2) {
+  return {
     clickedBottle: clickedBottle,
     ml: 0.25,
     index: littleBottles.indexOf(clickedBottle) + 1,
-    bottlesDrank: 0,
-    mlDrank: 0,
-    percentDrank: 0,
-    remainingLiter: 2
+    bottlesDrank: value0,
+    mlDrank: value0,
+    percentDrank: value0,
+    remainingLiter: value2
   };
+}
 
-  if (drank) {
-    bottleState.mlDrank = bottleState.ml * bottleState.index;
-    bottleState.remainingLiter -= bottleState.ml * bottleState.index;
-  } else {
-    bottleState.mlDrank -= bottleState.ml * bottleState.index;
-    bottleState.remainingLiter += bottleState.ml * bottleState.index;
-  }
+function calcDrank(drank, clickedBottle) {
+  const bottleState = storeDrinkingGoals(clickedBottle);
+
+  bottleState.mlDrank = bottleState.ml * bottleState.index;
   bottleState.percentDrank = (bottleState.mlDrank / 2) * 100;
+  if (drank) {
+    bottleState.remainingLiter -= bottleState.mlDrank;
+  } else {
+    bottleState.remainingLiter = bottleState.mlDrank;
+  }
 
   updateBigBottle(bottleState);
-  updateLittleBottles(drank, bottleState);
-
-  console.log(
-    bottleState.index,
-    bottleState.mlDrank,
-    bottleState.percentDrank,
-    bottleState.remainingLiter
-  );
+  updateLittleBottles(bottleState);
 }
 
 function updateBigBottle(bottleState) {
